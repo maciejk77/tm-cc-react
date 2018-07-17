@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import data from './data/data.json';
+import CardList from './CardList.js';
 
 class CardChecker extends Component {
   constructor(props) {
@@ -10,17 +11,19 @@ class CardChecker extends Component {
       name: '',
       status: '',
       income: 0,
-      cards_collection: []
+      collection: null
     }
     this.handle_income_change = this.handle_income_change.bind(this);
     this.handle_name_change = this.handle_name_change.bind(this);
     this.handle_status_change = this.handle_status_change.bind(this);
     this.handle_submit = this.handle_submit.bind(this);
+
     this.is_for_student = this.is_for_student.bind(this);
     this.is_for_all = this.is_for_all.bind(this);
     this.is_for_set_income = this.is_for_set_income.bind(this);
-    this.fetch_student_cards_data = this.fetch_student_cards_data.bind(this);
-    this.fetch_for_all_cards_data = this.fetch_for_all_cards_data.bind(this);
+
+    //this.fetch_cards_data = this.fetch_cards_data.bind(this);
+    //this.fetch_by_income_cards_data = this.fetch_by_income_cards_data.bind(this);
   }
 
 
@@ -51,46 +54,41 @@ class CardChecker extends Component {
     return this.state.status >= this.state.income
   }
 
-  fetch_student_cards_data() {
-    return this.state.cards.filter(card => card.status === "Student");
-    //console.log('student card data => ', student_card)
-    //for(let obj in student_card) { console.log(obj.apr) } 
+  fetch_cards_data(keyword) {
+    return this.state.cards.filter(card => card.status === keyword);
   }
 
-  fetch_for_all_cards_data() {
-    return this.state.cards.filter(card => card.status === "All");
-  }
-
-  fetch_for_income_cards_data() {
-    return this.state.cards.filter(card => this.state.income >= card.status);
+  fetch_by_income_cards_data() {
+    return this.state.cards.filter(card => card.status <= this.state.income);
   }
 
   handle_submit(event) {
     event.preventDefault();
 
-    let collection = [];
+    let cards_collection = [];
 
     if(this.is_for_student()) {
-      const cards_data = this.fetch_student_cards_data(); 
-      collection = collection.concat(cards_data);
+      const cards_data = this.fetch_cards_data("Student"); 
+      cards_collection = cards_collection.concat(cards_data);
     } 
 
     if(this.is_for_all()) {
-      const cards_data = this.fetch_for_all_cards_data();
-      collection = collection.concat(cards_data);
+      const cards_data = this.fetch_cards_data("All");
+      cards_collection = cards_collection.concat(cards_data);
     } 
 
     if(this.is_for_set_income()) {
-      const cards_data = this.fetch_for_income_cards_data();
-      collection = collection.concat(cards_data);
+      const cards_data = this.fetch_by_income_cards_data();
+      cards_collection = cards_collection.concat(cards_data);
     } 
 
-    console.log('collection ===> ', collection);
+    this.setState({ collection: cards_collection });
     this.setState({name: '', status: '', income: 0});
   }
 
   render() {
     return (
+      <div>
       <form onSubmit={this.handle_submit}>
         <label>Name</label>
         <input 
@@ -116,7 +114,9 @@ class CardChecker extends Component {
           onChange={this.handle_status_change}
         />
         <button type="submit">CHECK</button>
-      </form>   
+      </form>
+      <CardList collection={this.state.collection} />
+      </div>   
     )
   }
 }
