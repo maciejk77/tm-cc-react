@@ -1,3 +1,3 @@
-## TM Crazy Cards
+## TM CC React app
 
 - delete registerServiceWorker.js ?
