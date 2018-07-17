@@ -25,7 +25,6 @@ class CardChecker extends Component {
 
 
   handle_income_change(event) {
-    // it is assumed that credit limit per customer is equal to 10% of income
     this.setState({ income: event.target.value });
   }
 
@@ -38,15 +37,17 @@ class CardChecker extends Component {
   }
 
   is_for_student() {
-    return this.state.status === 'Student'
+    // will be available to those with status Student
+    return this.state.status.toLowerCase() === 'student';
   }
 
   is_for_all() {
-    // return this.state.status === 'All'
+    // will always be true, card available to all
     return true;
   }
 
   is_for_set_income() {
+    // will be available to those with income greater/equal to status limit e.g. 16k
     return this.state.status >= this.state.income
   }
 
@@ -58,14 +59,10 @@ class CardChecker extends Component {
 
   fetch_for_all_cards_data() {
     return this.state.cards.filter(card => card.status === "All");
-    //console.log('student card data => ', student_card)
-    //for(let obj in student_card) { console.log(obj.apr) } 
   }
 
   fetch_for_income_cards_data() {
     return this.state.cards.filter(card => this.state.income >= card.status);
-    //console.log('student card data => ', student_card)
-    //for(let obj in student_card) { console.log(obj.apr) } 
   }
 
   handle_submit(event) {
@@ -74,29 +71,21 @@ class CardChecker extends Component {
     let collection = [];
 
     if(this.is_for_student()) {
-      const cards_data = this.fetch_student_cards_data();
-      //console.log('is for student ===> ', cards_data);  
-
+      const cards_data = this.fetch_student_cards_data(); 
       collection = collection.concat(cards_data);
-      console.log('collection ===> ', collection);
     } 
 
     if(this.is_for_all()) {
       const cards_data = this.fetch_for_all_cards_data();
-      //console.log('is for for all ===> ', cards_data);  
-
       collection = collection.concat(cards_data);
-      console.log('collection ===> ', collection);
     } 
 
     if(this.is_for_set_income()) {
       const cards_data = this.fetch_for_income_cards_data();
-      //console.log('is for for income ===> ', cards_data);  
-
       collection = collection.concat(cards_data);
-      console.log('collection ===> ', collection);
     } 
 
+    console.log('collection ===> ', collection);
     this.setState({name: '', status: '', income: 0});
   }
 
