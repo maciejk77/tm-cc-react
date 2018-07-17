@@ -41,7 +41,7 @@ class CardChecker extends Component {
 
   is_for_student() {
     // will be available to those with status Student
-    return this.state.status.toLowerCase() === 'student';
+    return this.state.status.trim().toLowerCase() === 'student';
   }
 
   is_for_all() {
@@ -65,6 +65,9 @@ class CardChecker extends Component {
   handle_submit(event) {
     event.preventDefault();
 
+    // the below logic should work if there are multiple cards
+    // meeting a given individual criteria e.g. 2 cards with status Student
+
     let cards_collection = [];
 
     if(this.is_for_student()) {
@@ -83,7 +86,7 @@ class CardChecker extends Component {
     } 
 
     this.setState({ collection: cards_collection });
-    this.setState({name: '', status: '', income: 0});
+    this.setState({ name: '', status: '', income: 0 });
   }
 
   render() {
