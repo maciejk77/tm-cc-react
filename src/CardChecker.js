@@ -22,8 +22,8 @@ class CardChecker extends Component {
     this.is_for_all = this.is_for_all.bind(this);
     this.is_for_set_income = this.is_for_set_income.bind(this);
 
-    //this.fetch_cards_data = this.fetch_cards_data.bind(this);
-    //this.fetch_by_income_cards_data = this.fetch_by_income_cards_data.bind(this);
+    //this.is_fetching_cards_data_with_status = this.is_fetching_cards_data_with_status.bind(this);
+    //this.is_fetching_cards_data_by_income = this.is_fetching_cards_data_by_income.bind(this);
   }
 
 
@@ -54,11 +54,11 @@ class CardChecker extends Component {
     return this.state.status >= this.state.income
   }
 
-  fetch_cards_data(keyword) {
+  is_fetching_cards_data_with_status(keyword) {
     return this.state.cards.filter(card => card.status === keyword);
   }
 
-  fetch_by_income_cards_data() {
+  is_fetching_cards_data_by_income() {
     return this.state.cards.filter(card => card.status <= this.state.income);
   }
 
@@ -71,17 +71,17 @@ class CardChecker extends Component {
     let cards_collection = [];
 
     if(this.is_for_student()) {
-      const cards_data = this.fetch_cards_data("Student"); 
+      const cards_data = this.is_fetching_cards_data_with_status("Student"); 
       cards_collection = cards_collection.concat(cards_data);
     } 
 
     if(this.is_for_all()) {
-      const cards_data = this.fetch_cards_data("All");
+      const cards_data = this.is_fetching_cards_data_with_status("All");
       cards_collection = cards_collection.concat(cards_data);
     } 
 
     if(this.is_for_set_income()) {
-      const cards_data = this.fetch_by_income_cards_data();
+      const cards_data = this.is_fetching_cards_data_by_income();
       cards_collection = cards_collection.concat(cards_data);
     } 
 
@@ -118,7 +118,7 @@ class CardChecker extends Component {
         />
         <button type="submit">CHECK</button>
       </form>
-      <CardList collection={this.state.collection} />
+      <CardList available_cards={this.state.collection} />
       </div>   
     )
   }
