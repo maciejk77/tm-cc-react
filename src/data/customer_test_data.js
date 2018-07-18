@@ -42,31 +42,5 @@
         "Anywhere Card"
       ]
     }
-  ],
-  "cards": [
-    {
-      "name": "Student Life Card",
-      "status": "Student",
-      "apr": 18.9,
-      "balance_mths": 0,
-      "purchase_mths": 6,
-      "credit_avail": 1200
-    },
-    {
-      "name": "Anywhere Card",
-      "status": "All",
-      "apr": 33.9,
-      "balance_mths": 0,
-      "purchase_mths": 0,
-      "credit_avail": 300
-    },
-    {
-      "name": "Liquid Card",
-      "status": 16000,
-      "apr": 33.9,
-      "balance_mths": 12,
-      "purchase_mths": 6,
-      "credit_avail": 3000
-    }
   ]
 }

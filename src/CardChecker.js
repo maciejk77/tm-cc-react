@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import data from './data/data.json';
+import data from './data/credit_cards_data.json';
 import CardList from './CardList.js';
 
 class CardChecker extends Component {
