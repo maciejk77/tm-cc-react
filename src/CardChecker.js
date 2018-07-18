@@ -13,11 +13,7 @@ class CardChecker extends Component {
       income: 0,
       collection: null
     }
-    this.handle_income_change = this.handle_income_change.bind(this);
-    this.handle_name_change = this.handle_name_change.bind(this);
-    this.handle_status_change = this.handle_status_change.bind(this);
     this.handle_submit = this.handle_submit.bind(this);
-
     this.is_for_student = this.is_for_student.bind(this);
     this.is_for_all = this.is_for_all.bind(this);
     this.is_for_set_income = this.is_for_set_income.bind(this);
@@ -26,17 +22,10 @@ class CardChecker extends Component {
     //this.is_fetching_cards_data_by_income = this.is_fetching_cards_data_by_income.bind(this);
   }
 
-
-  handle_income_change(event) {
-    this.setState({ income: event.target.value });
-  }
-
-  handle_name_change(event) {
-    this.setState({ name: event.target.value });
-  }
-
-  handle_status_change(event) {
-    this.setState({ status: event.target.value });
+  handle_change(e) {
+    let change = {}
+    change[e.target.name] = e.target.value
+    this.setState(change)
   }
 
   is_for_student() {
@@ -98,7 +87,7 @@ class CardChecker extends Component {
           type="text" 
           name="name"
           value={this.state.name} 
-          onChange={this.handle_name_change} 
+          onChange={this.handle_change.bind(this)}
         />
 
         <label>Income</label>
@@ -106,7 +95,7 @@ class CardChecker extends Component {
           type="text" 
           name="income"
           value={this.state.income}
-          onChange={this.handle_income_change} 
+          onChange={this.handle_change.bind(this)}
         />
 
         <label>Status</label>
@@ -114,7 +103,7 @@ class CardChecker extends Component {
           type="text" 
           name="status"
           value={this.state.status} 
-          onChange={this.handle_status_change}
+          onChange={this.handle_change.bind(this)}
         />
         <button type="submit">CHECK</button>
       </form>
