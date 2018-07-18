@@ -21,12 +21,12 @@ Button switches between ADD/REMOVE updating TOTAL CREDIT and changing the given 
 ## Steps completed
 - used functional and class React components
 - used **create-react-app** to scaffold application
-- used **axios** to fetch data from endpoint
 
 ## To do
 - add responsivness
 - add some tests, app was not TDD
 - BUG: selecting card with Rieck and changing to Edmundson keeps 'Anywhere Card' selected (shared by both customers), app should reset state after each Last Name submission
+- form validation e.g. Name => String, Income => Number, Status => Student / Other dropdown?
  
 ## Requested elements in the final output
 - Testing
