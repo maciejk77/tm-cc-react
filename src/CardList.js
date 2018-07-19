@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Card from './Card.js';
+import './styles/CardList.css';
+import cn from 'classnames';
 
 class CardList extends Component {
   constructor(props) {
@@ -39,12 +41,12 @@ class CardList extends Component {
 
   render() {  
     return (
-    <div>
+    <div className="card-list">
       { this.state.total_credit
-        ? <div>TOTAL CREDIT: £{this.state.total_credit}</div>
-        : <div> &nbsp; </div>
+        ? <div className="card-list__label">Total Sum of the Credit Selected: £{this.state.total_credit}</div>
+        : <div className="card-list__label--nonactive"> &nbsp; </div>
       }
-      <div>{this.render_cards()}</div>
+      <div className="card-list__group">{this.render_cards()}</div>
     </div>
     )
   }

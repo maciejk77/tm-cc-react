@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './styles/Card.css';
 
 class Card extends Component {
   constructor(props) {
@@ -22,18 +23,17 @@ class Card extends Component {
   render() {
     const { name, status, apr, balance_mths, purchase_mths, credit_avail } = this.props.card;
     return (
-      <div>
-        <div>APR: {apr}%</div>
-        <div>Balance: {balance_mths} months</div>
-        <div>Credit available: £{credit_avail}</div>
-        <div>Card name: {name}</div>
-        <div>Purchase: {purchase_mths} months</div>
-        <div>Status: {typeof(status) === "number" && '£'}{status}</div>
+      <div className="card">
+        <div className="card__item">APR: {apr}%</div>
+        <div className="card__item">Balance: {balance_mths} months</div>
+        <div className="card__item">Credit available: £{credit_avail}</div>
+        <div className="card__item">Card name: {name}</div>
+        <div className="card__item">Purchase: {purchase_mths} months</div>
+        <div className="card__item">Status: {typeof(status) === "number" && '£'}{status}</div>
         { this.state.to_add 
-          ? <button onClick={() => this.handle_add(credit_avail)}>ADD</button> 
-          : <button onClick={() => this.handle_remove(credit_avail)}>REMOVE</button> 
+          ? <button className="card__button" onClick={() => this.handle_add(credit_avail)}>ADD</button> 
+          : <button className="card__button card__button--remove" onClick={() => this.handle_remove(credit_avail)}>REMOVE</button> 
         }
-        <div>------------</div>
       </div>
     )
   }

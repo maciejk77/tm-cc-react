@@ -1,0 +1,55 @@
+@import './vars.scss';
+
+// classes to be refactored on corresponding markup
+// so BEM classes and Sass nesting with & can be used
+
+.logo {
+  background-repeat: no-repeat;
+  background-image: url('../img/tm-crazycards-2.png');
+  padding-bottom: 9rem;
+  width: 35rem;
+  margin: 1.5rem auto .2rem;
+}
+
+.form-group {
+  margin: 0 auto;
+  margin-bottom: .5rem;
+}
+
+.button-wrapper {
+  border: 10px solid black;
+}
+
+.label {
+  font-size: 1.2rem;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: $cc-basic;
+  padding-right: 1rem;
+}
+
+.input {
+  font-size: .9rem;
+  width: 18rem; 
+  height: 2rem;
+  border: .15rem solid $cc-theme;
+  border-radius: 1rem;
+  padding: 0 1rem;
+  outline: none;
+  margin-bottom: .5rem;
+}
+
+.form-button {
+  font-size: 1rem;
+  border-radius: 1rem;
+  width: 8rem;
+  height: 2.5rem;
+  background-color: $cc-basic;
+  color: $cc-theme;
+  border: none;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+

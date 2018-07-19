@@ -1,0 +1,41 @@
+@import './vars.scss';
+
+.card {
+  border: .1rem solid $cc-basic;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  width: 20rem;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  background-color: cc-theme;
+  margin-right: .5rem;
+  text-align: center;
+
+  &__item {
+    color: $cc-basic;
+    padding-bottom: .3rem;
+  }
+
+  &__button {
+    width: 10rem;
+    height: 2rem;
+    margin-top: .5rem;
+    border-radius: 1.5rem;
+    border: none;
+    color: $cc-theme;
+    font-size: 1.1rem;
+    outline: none; 
+  
+    &--remove {
+      color: $cc-basic;
+      background-color: $cc-theme;
+      border: 1px solid $cc-basic;
+      outline: none;
+    }
+  }
+}
+
+
+
+
+

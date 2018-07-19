@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import data from './data/credit_cards_data.json';
 import CardList from './CardList.js';
+import './styles/CardChecker.css';
 
 class CardChecker extends Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class CardChecker extends Component {
       cards: data.cards,
       name: '',
       status: '',
-      income: 0,
+      income: '',
       collection: null
     }
     this.handle_submit = this.handle_submit.bind(this);
@@ -75,39 +76,52 @@ class CardChecker extends Component {
     } 
 
     this.setState({ collection: cards_collection });
-    this.setState({ name: '', status: '', income: 0 });
+    this.setState({ name: '', status: '', income: '' });
   }
 
   render() {
     return (
       <div>
-      <form onSubmit={this.handle_submit}>
-        <label>Name</label>
-        <input 
-          type="text" 
-          name="name"
-          value={this.state.name} 
-          onChange={this.handle_change.bind(this)}
+        <div className="logo"></div>
+        <form onSubmit={this.handle_submit}> 
+          <table className="form-group">        
+            <tr>
+              <td className="label">Name</td>
+              <input
+                className="input" 
+                type="text" 
+                name="name"
+                value={this.state.name} 
+                onChange={this.handle_change.bind(this)}
+              />
+            </tr>
+            <tr>
+              <td className="label">Income</td> 
+              <input
+                className="input" 
+                type="text" 
+                name="income"
+                value={this.state.income}
+                onChange={this.handle_change.bind(this)}
+              />
+            </tr>
+            <tr>
+              <td className="label">Status</td>      
+              <input 
+                className="input"
+                type="text" 
+                name="status"
+                value={this.state.status} 
+                onChange={this.handle_change.bind(this)}
+              />
+            </tr>
+          </table>  
+          <button className="form-button" type="submit">CHECK</button>        
+        </form>
+        <CardList 
+          className="card-list"
+          available_cards={this.state.collection} 
         />
-
-        <label>Income</label>
-        <input 
-          type="text" 
-          name="income"
-          value={this.state.income}
-          onChange={this.handle_change.bind(this)}
-        />
-
-        <label>Status</label>
-        <input 
-          type="text" 
-          name="status"
-          value={this.state.status} 
-          onChange={this.handle_change.bind(this)}
-        />
-        <button type="submit">CHECK</button>
-      </form>
-      <CardList available_cards={this.state.collection} />
       </div>   
     )
   }
