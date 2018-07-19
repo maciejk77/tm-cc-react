@@ -30,6 +30,8 @@ Button switches between ADD/REMOVE updating TOTAL CREDIT and changing the given 
 - form validation e.g. Name => String, Income => Number, Status => Student / Other dropdown?
 - Name, Income 0, some Status required to see 'Anywhere Card' => validation for least criteria card
 - check BEM CSS classes markup and corresponding Sass file CardChecker.scss - refactor like other files to include Sass '&' nesting
- 
+
+[Another similar app](https://github.com/maciejk77/tm-app) but with fixed logic, Express endpoints, Redux etc 
+
 ## Screenshot
 ![Screenshot](public/screenshot.png)
