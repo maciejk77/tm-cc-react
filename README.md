@@ -1,4 +1,4 @@
-## TM CC React app
+## Crazy Cards React app
 
 ### Project information
 
@@ -21,19 +21,15 @@ Button switches between ADD/REMOVE updating TOTAL CREDIT and changing the given 
 ## Steps completed
 - used functional and class React components
 - used **create-react-app** to scaffold application
+- used **node-sass-chokidar** to tranpile Sass to CSS on build, watch-css also included to transpile while developing
 
 ## To do
 - add responsivness
-- add some tests, app was not TDD
+- add some tests, app was not TDD-ed, some comments/ideas on what to test in __tests__ folder 
 - BUG: selecting card with Rieck and changing to Edmundson keeps 'Anywhere Card' selected (shared by both customers), app should reset state after each Last Name submission
 - form validation e.g. Name => String, Income => Number, Status => Student / Other dropdown?
+- Name, Income 0, some Status required to see 'Anywhere Card' => validation for least criteria card
+- check BEM CSS classes markup and corresponding Sass file CardChecker.scss - refactor like other files to include Sass '&' nesting
  
-## Requested elements in the final output
-- Testing
-- Extensibility
-- Responsive web design
-- Hand-rolled server configuration
-- Mock endpoints
-
 ## Screenshot
-![Screenshot](public/screenshot-tm.png)
+![Screenshot](public/screenshot.png)
